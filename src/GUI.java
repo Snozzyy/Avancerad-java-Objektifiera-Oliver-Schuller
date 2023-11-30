@@ -29,9 +29,8 @@ public class GUI  extends JFrame implements ActionListener {
         table = new JTable();
         table.setAutoCreateRowSorter(true);
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.add(table);
-        scrollPane.setSize(1000, 520);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(1000, 520));
         tablePanel.add(scrollPane);
 
         showPath = new JTextField(30);
@@ -69,7 +68,12 @@ public class GUI  extends JFrame implements ActionListener {
         for (int i = 1; i < data.length; i++) {
             tableModel.addRow(data[i]);
         }
+
         table.setModel(tableModel);
-        
+
+        for (String i : header) {
+            System.out.println(i);
+        }
+
     }
 }

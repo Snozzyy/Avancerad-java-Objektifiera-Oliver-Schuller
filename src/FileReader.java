@@ -40,7 +40,6 @@ public class FileReader {
 
             while ((str = br.readLine()) != null){
                 list.add(str);
-                //System.out.println(str);
             }
 
             // Create 2d array representing table row and column
