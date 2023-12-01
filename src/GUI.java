@@ -5,13 +5,11 @@ import java.awt.event.*;
 import java.io.IOException;
 
 public class GUI  extends JFrame implements ActionListener {
-
     private JTextField showPath;
     private JButton chooseFile;
     private JButton showFile;
     private JPanel tablePanel;
     private static JTable table;
-
 
     public GUI() {
         super("Objektivering");
@@ -70,7 +68,6 @@ public class GUI  extends JFrame implements ActionListener {
             else
                 JOptionPane.showMessageDialog(null,"Unsupported file type, please choose JSON " +
                         "or CSV");
-
     }
 
     // sets TableModel

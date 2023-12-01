@@ -57,8 +57,6 @@ public class FileReader {
 
             // Get the header of CSV-file
             String[] header = list.get(0).split(",");
-            // Remove first row since it's getting displayed in header
-            list.remove(0);
 
             GUI.setTableModel(data, header);
 
@@ -79,6 +77,7 @@ public class FileReader {
 
         // Create 2d array representing rows and columns
         String[][] data = new String[array.size()][header.length];
+
         // Loop through Array to get each row and add it to data
         for (int i = 0; i < array.size(); i++) {
             jsonObject = array.get(i).asObject();
