@@ -8,7 +8,6 @@ public class GUI  extends JFrame implements ActionListener {
     private JTextField showPath;
     private JButton chooseFile;
     private JButton showFile;
-    private JPanel tablePanel;
     private static JTable table;
 
     public GUI() {
@@ -18,7 +17,7 @@ public class GUI  extends JFrame implements ActionListener {
 
         JPanel panel = new JPanel(new BorderLayout());
         JPanel footerPanel = new JPanel();
-        tablePanel = new JPanel();
+        JPanel tablePanel = new JPanel();
 
         table = new JTable();
         table.setAutoCreateRowSorter(true);
