@@ -69,7 +69,7 @@ public class FileReader {
         // Reads the file and adds the value to an array
         JsonArray array = Json.parse(new java.io.FileReader(file)).asArray();
 
-        // Create JsonObject which contains first row then add column names to header
+        // Create JsonObject which contains first row
         JsonObject jsonObject = array.get(0).asObject();
 
         // Header grabs the column names from jsonObject and saves it in array
