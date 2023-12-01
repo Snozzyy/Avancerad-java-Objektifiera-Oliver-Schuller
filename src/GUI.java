@@ -1,12 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.awt.event.*;
+import java.io.IOException;
 
 public class GUI  extends JFrame implements ActionListener {
 
@@ -54,26 +50,36 @@ public class GUI  extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Check which button is used
         if (e.getSource() == chooseFile)
             showPath.setText(FileReader.openExplorer());
-        else if (e.getSource() == showFile);
-            if (FileReader.getExtension().equals("csv"))
+        else if (e.getSource() == showFile)
+            // Checks the file type and runs correct function accordingly to the type
+            if (FileReader.getExtension() == null)
+                JOptionPane.showMessageDialog(null, "Please choose a file");
+            else if (FileReader.getExtension().equals("csv"))
                 FileReader.readCSV();
+            else if (FileReader.getExtension().equals("json")) {
+                try {
+                    FileReader.readJSON();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            // If file type is not supported, display message
+            else
+                JOptionPane.showMessageDialog(null,"Unsupported file type, please choose JSON " +
+                        "or CSV");
 
     }
 
+    // sets TableModel
     public static void setTableModel(Object[][] data, String[] header) {
-
+        // Set header, loop through data and add each row
         DefaultTableModel tableModel = new DefaultTableModel(header, 0);
-        for (int i = 1; i < data.length; i++) {
-            tableModel.addRow(data[i]);
+        for (Object[] datum : data) {
+            tableModel.addRow(datum);
         }
-
         table.setModel(tableModel);
-
-        for (String i : header) {
-            System.out.println(i);
-        }
-
     }
 }
